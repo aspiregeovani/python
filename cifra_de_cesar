@@ -1,0 +1,36 @@
+
+#--Parte de Criptografia
+
+
+arquivo = input("Digite o texto que você deseja cifrar: ")
+arquivo = arquivo.lower()
+rotacao = int(input("Digite o índice de Rotação: "))
+alfabeto = 'abcdefghijklmnopqrstuvwxyz '
+cript = ''
+descript = ''
+
+
+for letra in arquivo:
+	if letra in alfabeto:
+		posicao = alfabeto.find(letra)
+		posicao = (posicao + rotacao) % 27
+		cript = cript + alfabeto[posicao]
+
+print("A palavra criptografada é: ", cript)
+
+#--Parte de Descriptografia
+
+sn = input("Deseja descriptografar? (s/n): ")
+if sn == 's':
+        for letra in cript:
+                if letra in alfabeto:
+                        posicao = alfabeto.find(letra)
+                        posicao = (posicao - rotacao) % 27
+                        descript = descript + alfabeto[posicao]
+        print("A palavra descriptografada é: ", descript)
+        
+elif sn == 'n':
+        print("")
+        
+else:
+        print("Digite somente 's'ou 'n'!")
