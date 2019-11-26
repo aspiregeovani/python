@@ -1,0 +1,61 @@
+abc='abcdefghijklmnopqrstuvxwyz '
+p=" "
+sn=" "
+
+def cifrar(texto, chave):
+    text_cifrar = ''
+
+    i=0
+    for letra in texto:
+        soma = abc.find(letra) + abc.find(chave[i % len(chave)])
+        modulo = int(soma) % len(abc)
+        text_cifrar = text_cifrar + str(abc[modulo])
+        i=i+1
+
+    return text_cifrar 
+
+def descifrar(texto, chave):
+    text_cifrar = ''
+
+    i=0
+    for letra in texto:
+        soma = abc.find(letra) - abc.find(chave[i % len(chave)])
+        modulo = int(soma) % len(abc)
+        text_cifrar = text_cifrar + str(abc[modulo])
+        i=i+1
+
+    return text_cifrar 
+
+def main(): 
+    
+    
+
+        p=input("Deseja cifrar ou descifrar? ")
+        if p=="cifrar":
+            c = str (input('Texto para Cifrar: ')).lower()
+            chave=str(input('Chave: ')).lower()
+            print (cifrar(c, chave))
+            sn=input("Deseja Descifrar? (s/n) ")
+            if sn == 's':
+                c = str (input('Texto para Descifrar: ')).lower()
+                chave=str(input('Chave: ')).lower()
+                print (descifrar(c, chave))
+
+            else:
+                print("")
+
+
+        
+        elif p=="descifrar":
+            c = str (input('Texto para Descifrar: ')).lower()
+            chave=str(input('Chave: ')).lower()
+            print (descifrar(c, chave))
+        else:
+            print("Comando Invalido!!")
+    
+        
+    
+    
+
+if __name__ == '__main__':
+    main()
